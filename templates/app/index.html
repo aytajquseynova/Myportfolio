@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://meyerweb.com/eric/tools/css/reset/reset.css">
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body>
+    <div class="app">
+        <div class="blackframe-container">
+            <div class="container">
+                <div class="bg-img"></div>
+                <!--main sectionu baslayir-->
+                <section id="main">
+                    <div class="main-container">
+                        <nav class="navbar">
+                            <ul>
+                                <li><a href="#about">Özünü təqdim et</a></li>
+                                <li><a href="#skills">Bacarıqlar</a></li>
+                                <li><a href="#tehsilvetecrube">Təhsil və təcrübə</a></li>
+                                <li><a href="#portfolio">Portfolio</a></li>
+                                <li><a href="#references">Rəylər</a></li>
+                                <li><a href="#connect">Əlaqə</a></li>
+                            </ul>
+                        </nav>
+                        <div class="introduce">
+                            <div class="introduce-name">
+                                <h2>AYTAC </h2>
+                                <h2>HUSEYNOVA</h2>
+                            </div>
+                            <div class="introduce-job">
+                                <hr>
+                                <div class="job-name"><span>Front-End Developer</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!--main sectionun sonu -->
+                <!--about sectionu baslayir-->
+                <section id="about">
+                    <div class="section-about">
+                        <h2 class="Mənim haqqımda">Haqqımda</h2>
+                        <hr>
+
+                        <p>Mən, Aytac Hüseynova.
+                        </p>
+                        <p> 20 yaşım var. Azərbaycan Dövlət Neft və Sənaye Universiteti SABAH fakültəsi Proseslərin
+                            avtomatlaşdırılması mühəndisliyi ixtisasında 4-cü kurs tələbəsiyəm. Pragmatech Təhsil
+                            Mərkəzi vasitəsilə development sahəsini öyrənirəm.</p>
+                        <br>
+
+                    </div>
+                </section>
+                <!--about sectionu bitir-->
+                <!--personal skills baslayir-->
+                <section id="skills">
+                    <div class="personal-skills">
+                        <h2>Şəxsi bacarıqlar</h2>
+                        <hr>
+                        <div class="skill-icons">
+                            <i class="fab fa-html5"></i>
+                            <i class="fab fa-css3-alt"></i>
+                            <i class="fab fa-js"></i>
+                            <i class="fab fa-python"></i>
+                            <i class="fa-brands fa-github"></i>
+                        </div>
+                    </div>
+                </section>
+                <!--skills section end-->
+                <!--tehsilvetecrube sectionu baslayir-->
+                <section id="tehsilvetecrube">
+                    <div class="work">
+                        <h2>WORK EXPERIENCE</h2>
+                        <hr>
+                        <div class="work-items">
+                            {%for exp in experience%}
+                            <div class="work-line">
+                                <h3>{{exp.experience_date}}</h3>
+                            </div>
+                            <h3>{{exp.experience_title}}</h3>
+                            <p class="job-location">{{exp.experience_description}}</p>
+                            <p class="work-about">
+                                {{exp.experience_information}}</p>
+                            {%endfor%}
+                        </div>
+                    </div>
+                    <div class="education">
+                        <h2>EDUCATION & DIPLOMAS</h2>
+                        <hr>
+                        <div class="education-items">
+                            {%for edu in education%}
+                            <div class="education-line">
+                                <h3>{{edu.education_date}}</h3>
+                            </div>
+                            <h3>{{edu.education_title}}</h3>
+                            <p class="education-location">{{edu.education_description}}</p>
+                            <p class="education-about">
+                                {{edu.education_information}}</p>
+                            {%endfor%}
+                        </div>
+                    </div>
+                </section>
+                <!--tehsilvetecrube sectionunun sonu-->
+                <!--portfolio sectionu baslayir-->
+                <section id="portfolio">
+                    <div class="portfolio">
+                        <div class="heading">
+                            <div class="portfolio-heading">
+                                <h2>Mənim işlərim</h2>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="menu" id="mybtnContainer">
+                        </div>
+                        <div class="img-frame">
+                            <div class="img-video">
+                                {% for prt in portfolios %}
+                                <div class="img-items">
+                                    <div class="test">
+
+                                        <p>{{prt.portfolio_title}}</p>
+                                    </div>
+                                    <img src="/static/uploads/{{prt.portfolio_img}}" alt="">
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!--portfolio sectionu bitir-->
+                <!--references seectionu baslayir-->
+                <section id="references">
+                    <div class="heading">
+                        <div class="heading-title">
+                            <h2>Mənim haqqımda nə deyirlər?</h2>
+                        </div>
+                        <div class="heading-hr">
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="comment-frame">
+                        {%for feedback in feedbacks %}
+                        <div class="comment">
+                            <div class="rey">
+                                <q>{{feedback.feedback_rey}}</q>
+                            </div>
+                            <div class="commenter-bio">
+                                <div class="commenter-info">
+                                    <img src="/static/uploads/{{feedback.feedback_img}}">
+                                    <div class="commenter-details">
+                                        <div class="commenter-name">
+                                            <p class="reyci-adi">{{feedback.feedback_cmntrname}}</p>
+                                            <p class="reyci-isi">{{feedback.feedback_cmntrjob}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </section>
+                <!--references sectionunun sonu-->
+                <!--connect sectionu baslayir-->
+                <section id="connect">
+                    <div class="connect-title">
+                        <div class="heading-connect">
+                            <h2>Connect me</h2>
+                        </div>
+                        <div class="heading-hr">
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="icons">
+                        <ul class="iconlar">
+                            <li><i class="fab fa-github"></i></li>
+                            <li><i class="fab fa-linkedin"></i></li>
+                            <li><i class="fab fa-instagram"></i></li>
+                        </ul>
+                    </div>
+                </section>
+                <!--connect sectionunun sonu-->
+                <!--form sectionu baslayir-->
+                <section id="form">
+                    <div class="form-box">
+                        <form method="post" action="/admin/contact">
+                            <p>Drop me a line</p>
+
+<div class="name">
+                                <label> </label>
+                                <input type="text" class="input" name="name" id="name" placeholder="Enter name"
+                                    required>
+                            </div>
+                            <div class="email">
+                                <label> </label>
+                                <input type="text" class="input" name="email" id="email" placeholder="Enter email"
+                                    required>
+                            </div>
+                            <div class="subject">
+                                <label> </label>
+
+                                <input type="text" class="input" name="subject" id="subject" placeholder="Enter subject"
+                                    required>
+                            </div>
+                            <div class="entermessage">
+                                <label> </label>
+                                <!--<textarea class="minimal" name="message" id="message" placeholder="Enter message"
+                                    required></textarea></div>-->
+                                <input type="text" class="input" name="message" id="message" placeholder="Enter message"
+                                    required>
+                                <div class="submit"><label> </label>
+                                    <!-- <input type="button" class="submit" value="Submit"> -->
+                                    <button type="submit">Submit</button>
+                                </div>
+                        </form>
+                    </div>
+                </section>
+                <!--form sectionunun sonu-->
+            </div>
+        </div>
+    </div>
+    </div>
+</body>

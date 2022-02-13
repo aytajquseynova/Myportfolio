@@ -1,0 +1,68 @@
+{% extends "admin/base.html" %} {% block content %}
+<section id="form">
+    <h2>Təcrübə</h2>
+    <div class="form-box">
+        <form action="/admin/experience" for="exampleFormControlInput1" class="form-label" method="post">
+
+            <div class="baslamatarixi">
+                <label> </label>
+
+                <input type="text" class="input" name="time" id="time" placeholder="Giriş tarixi və Çıxış tarixi" required>
+            </div>
+           
+            <div class="yer">
+                <label> </label>
+
+                <input type="text" class="input" name="isyeri" id="isyeri" placeholder="İş yeri"
+                    required>
+            </div>
+            <div class="place">
+                <label> </label>
+
+                <input type="text" class="input" name="vezife" id="vezife" placeholder="Vəzifə" required>
+            </div>
+            <div class="info">
+                <label> </label>
+
+                <input type="text" class="input" name="info" id="melumat" placeholder="Məlumat" required>
+            </div>
+            <div class="submit">
+                <label> </label>
+                <!-- <input type="button" class="submit" value="Submit"> -->
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+     <div class="pl-60 mt-5">
+         <table class="table rounded text-light">
+             <thead>
+                 <tr>
+                     <th scope="col">#</th>
+                     <th scope="col">Başlama ve Bitmə tarixi</th>
+                     <th scope="col">Iş qurumu</th>
+                     <th scope="col">Vəzifə</th>
+                     <th scope="col">Kiçik informasiya</th>
+                     <th scope="col">Update</th>
+                     <th scope="col">Delete</th>
+                 </tr>
+             </thead>
+             <tbody>
+                 {%for exp in experience%}
+                 <tr>
+                     <td>{{exp.id}}</td>
+                     <td>{{exp.experience_date}}</td>
+                     <td>{{exp.experience_title}}</td>
+                     <td>{{exp.experience_description}}</td>
+                     <td>{{exp.experience_information}}</td>
+                     <td><a href="/experienceEdit/{{exp.id}}"><i class="far fa-edit"
+                                 style="color: #adaefc;"></i></a></td>
+                     <td><a href="/experienceDelete/{{exp.id}}"> <i class="far fa-trash-alt"
+                                 style="color: #adaefc;"></i></a>
+                     </td>
+                 </tr>
+                 {%endfor%}
+             </tbody>
+         </table>
+     </div>
+</section>
+{% endblock %}

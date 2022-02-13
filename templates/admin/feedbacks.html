@@ -1,0 +1,60 @@
+{% extends "admin/base.html" %} {% block content %}
+<section id="form">
+  <h2>Rəylər</h2>
+  <div class="form-box">
+    <form action="/admin/feedbacks" method="post" enctype="multipart/form-data" for="exampleFormControlInput1"
+      class="form-label">
+      <div class="rey">
+        <label> </label>
+
+        <input type="text" class="input" name="rey" id="rey" placeholder="Rəy" required />
+      </div>
+      <div class="cmntrname">
+        <label> </label>
+
+        <input type="text" class="input" name="cmntrname" id="cmntrname" placeholder="Rəy yazanın adı" required />
+      </div>
+      <div class="cmntrjob">
+        <label> </label>
+
+        <input type="text" class="input" name="cmntrjob" id="cmntrjob" placeholder="Rəy yazanın işi" required />
+      </div>
+      <div class="img">
+        <label> </label>
+        <input type="file" class="input" name="img" id="img" placeholder="Rəy yazanın şəkli" required />
+      </div>
+      <div class="submit">
+        <label> </label>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+    <div class="pl-60 mt-5">
+      <table class="table rounded text-light">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Adi</th>
+            <th scope="col">Ishi</th>
+            <th scope="col">Rey</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%for feedback in feedbacks%}
+          <tr>
+            <td>{{feedback.id}}</td>
+            <td>{{feedback.feedback_cmntrname}}</td>
+            <td>{{feedback.feedback_cmntrjob}}</td>
+            <td>{{feedback.feedback_rey}}</td>
+            <td><a href="/feedbackEdit/{{feedback.id}}"><i class="far fa-edit" style="color: #adaefc;"></i></a></td>
+            <td><a href="/feedbackDelete/{{feedback.id}}"> <i class="far fa-trash-alt" style="color: #adaefc;"></i></a>
+            </td>
+          </tr>
+          {%endfor%}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+{% endblock %}
